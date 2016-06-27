@@ -21,6 +21,8 @@ public class CodeKampJframe extends JFrame implements ActionListener {
 
     private  List<CodeKampJframe> childWindows = new ArrayList<>();
 
+    private CodeKampJframe sibling;
+
     public CodeKampJframe() {
         this("CodeKamp");
     }
@@ -55,7 +57,7 @@ public class CodeKampJframe extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.changeColorButton) {
 
-            this.changeColor();
+            this.textLabel.setForeground(Color.red);
 
         } else if (e.getSource() == this.duplicateButton) {
             CodeKampJframe frame = new CodeKampJframe();
