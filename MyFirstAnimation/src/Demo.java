@@ -10,6 +10,7 @@ public class Demo implements KeyListener {
 
     private static int xVel = 0;
     private static int yVel = 0;
+    private static int startAngle = 0;
 
     public static void main(String[] args) {
 
@@ -52,7 +53,7 @@ public class Demo implements KeyListener {
             y = y + Demo.yVel;
 
             graphics1.clearRect(0, 0, 600, 500);
-            graphics1.fillOval(x, y, 100, 100);
+            graphics1.fillArc(x, y, 100, 100, Demo.startAngle, 270);
 
             try {
                 Thread.sleep(20);
@@ -73,15 +74,19 @@ public class Demo implements KeyListener {
         if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
             Demo.xVel = 3;
             Demo.yVel = 0;
+            Demo.startAngle = 45;
         } else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
             Demo.xVel = -3;
             Demo.yVel = 0;
+            Demo.startAngle = 225;
         } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
             Demo.xVel = 0;
             Demo.yVel = 3;
+            Demo.startAngle = 315;
         } else if(e.getKeyCode() == KeyEvent.VK_UP) {
             Demo.xVel = 0;
             Demo.yVel = -3;
+            Demo.startAngle = 135;
         } else if(e.getKeyCode() == KeyEvent.VK_SPACE) {
             Demo.xVel = 0;
             Demo.yVel = 0;
