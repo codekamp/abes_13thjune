@@ -1,10 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  * Created by cerebro on 28/06/16.
  */
-public class Demo {
+public class Demo implements KeyListener {
+
+    private static int xVel = 0;
+    private static int yVel = 0;
+
     public static void main(String[] args) {
 
         JFrame frame1 = new JFrame();
@@ -22,6 +28,11 @@ public class Demo {
         frame1.setVisible(true);
 
 
+        panel1.setFocusable(true);
+        panel1.requestFocus();
+        Demo demo1 = new Demo();
+        panel1.addKeyListener(demo1);
+
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
@@ -35,30 +46,10 @@ public class Demo {
 
         int x = 0;
         int y = 0;
-        int xVel = 3;
-        int yVel = 3;
+
         while (true) {
-            x = x + xVel;
-            y = y + yVel;
-
-            if (y >= 400) {
-                yVel = -3;
-            }
-
-            if (x >= 500) {
-                xVel = -3;
-            }
-
-            if (x <= 0) {
-                xVel = 3;
-            }
-
-            if (y <= 0) {
-                yVel = 3;
-            }
-
-
-
+            x = x + Demo.xVel;
+            y = y + Demo.yVel;
 
             graphics1.clearRect(0, 0, 600, 500);
             graphics1.fillOval(x, y, 100, 100);
@@ -69,6 +60,38 @@ public class Demo {
                 e.printStackTrace();
             }
         }
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            Demo.xVel = 3;
+            Demo.yVel = 0;
+        } else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+            Demo.xVel = -3;
+            Demo.yVel = 0;
+        } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+            Demo.xVel = 0;
+            Demo.yVel = 3;
+        } else if(e.getKeyCode() == KeyEvent.VK_UP) {
+            Demo.xVel = 0;
+            Demo.yVel = -3;
+        } else if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+            Demo.xVel = 0;
+            Demo.yVel = 0;
+        } else {
+            System.out.println("Some other key pressed, so neglecting it.");
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
 
     }
 }
