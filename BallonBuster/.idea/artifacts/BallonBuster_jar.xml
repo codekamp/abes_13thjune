@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BallonBuster:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/BallonBuster_jar</output-path>
+    <root id="archive" name="BallonBuster.jar">
+      <element id="module-output" name="BallonBuster" />
+    </root>
+  </artifact>
+</component>
